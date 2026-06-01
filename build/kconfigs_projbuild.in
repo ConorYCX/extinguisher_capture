@@ -1,0 +1,6 @@
+source "C:/idf_audio_camera/esp-idf/examples/get-started/audio_camera_Ax_300/components/components/app_update/Kconfig.projbuild"
+source "C:/idf_audio_camera/esp-idf/examples/get-started/audio_camera_Ax_300/components/components/bootloader/Kconfig.projbuild"
+source "C:/idf_audio_camera/esp-idf/examples/get-started/audio_camera_Ax_300/components/components/esp_rom/Kconfig.projbuild"
+source "C:/idf_audio_camera/esp-idf/examples/get-started/audio_camera_Ax_300/components/components/esptool_py/Kconfig.projbuild"
+source "C:/idf_audio_camera/esp-idf/examples/get-started/audio_camera_Ax_300/components/components/partition_table/Kconfig.projbuild"
+source "C:/idf_audio_camera/esp-idf/examples/get-started/audio_camera_Ax_300/main/Kconfig.projbuild"

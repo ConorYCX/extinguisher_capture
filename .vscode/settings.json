@@ -1,0 +1,18 @@
+{
+    "idf.adapterTargetName": "esp32s3",
+    "idf.portWin": "COM8",
+    "files.associations": {
+        "*.h": "c",
+        "*.c": "c",
+        "*.inc": "c",
+        "*.ipp": "cpp",
+        "array": "c",
+        "bitset": "c",
+        "string_view": "c",
+        "initializer_list": "c",
+        "regex": "c",
+        "utility": "c"
+    },
+    "idf.pythonInstallPath": "c:\\idf_audio_camera\\tools\\tools\\idf-python\\3.8.7\\python.exe",
+    "idf.flashType": "UART"
+}
