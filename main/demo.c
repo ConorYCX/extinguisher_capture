@@ -4,6 +4,9 @@
 
 #define TAG "demo"
 
+// 自定义设备ID - 修改这里来设置你的设备名称
+// 示例: "device_001", "camera_01", "my_device", 等等
+#define CUSTOM_DEVICE_ID "device_001"
 
 #define gpio_camera_power_pin 0 //控制摄像头的电源引脚
 
@@ -13,8 +16,8 @@ int32_t on_modem_event_id = MODEM_EVENT_UNKNOWN;
 //操作nvs时用的句柄
 nvs_handle_t my_nvs_handle;
 //设置休眠时间
-uint64_t sleep_time_ok=60;//正常休眠时间(分钟)
-uint64_t sleep_time_err=30;//错误休眠时间(分钟)
+uint64_t sleep_time_ok=1;//正常休眠时间(分钟)
+uint64_t sleep_time_err=1;//错误休眠时间(分钟)
 
 //时间
 time_t time1 = 0;
@@ -496,7 +499,7 @@ static void http_camera_task(void *pvParameters)
 
     //http
     esp_http_client_config_t config = {
-        .url = "http://192.168.0.2:8081/PHP/audio_camera1.php",//或者https://mnifdv.cn/PHP/audio_camera1.php
+        .url = "http://192.168.0.3:8081/PHP/audio_camera1.php",//或者https://mnifdv.cn/PHP/audio_camera1.php
         .method = HTTP_METHOD_POST,
         .event_handler = _http_event_handler,
         .buffer_size_tx = 1460*17,
@@ -856,6 +859,12 @@ static void http_camera_task(void *pvParameters)
                         esp_read_mac(efuse_mac,ESP_MAC_ETH);
                         sprintf(data_buff, "%02X%02X%02X%02X%02X%02X", efuse_mac[0],efuse_mac[1],efuse_mac[2],efuse_mac[3],efuse_mac[4],efuse_mac[5]);
                     }
+                    
+                    // 使用自定义设备ID覆盖IMEI/MAC
+                    memset(data_buff,0,sizeof(data_buff));
+                    snprintf(data_buff,sizeof(data_buff),"%s",CUSTOM_DEVICE_ID);
+                    ESP_LOGI(TAG, "使用自定义设备ID: %s", data_buff);
+                    
                     //设置数据                                数据name                 数据        数据长度         打印错误日志
                     gy_http_post_form_data_body(esp_client, "client_id", NULL, NULL, data_buff, strlen(data_buff), 1);
 
